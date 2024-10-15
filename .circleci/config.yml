@@ -3,6 +3,7 @@
 version: 2.1
 orbs:
   node: circleci/node@5
+  heroku: circleci/heroku@1.2.6
 jobs:
   test-node:
     # Install node dependencies and run tests
@@ -27,6 +28,6 @@ workflows:
   build-and-test:
     jobs:
       - test-node
-    # - deploy:
-    #     requires:
-    #       - test-node
+  heroku_deploy:
+    jobs:
+      - heroku/deploy-via-git
